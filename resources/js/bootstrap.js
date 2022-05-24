@@ -1,5 +1,23 @@
 window._ = require('lodash');
 
+try {
+    require('bootstrap');
+} catch (e) {}
+
+try {
+    window.$ = window.jQuery = require('jquery');
+    } catch (e) {}
+
+        $( '#topheader .navbar-nav a' ).on('click',
+                    function () {
+            $( '#topheader .navbar-nav' ).find( 'li.active' )
+            .removeClass( 'active' );
+            $( this ).parent( 'li' ).addClass( 'active' );
+        });
+
+
+
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

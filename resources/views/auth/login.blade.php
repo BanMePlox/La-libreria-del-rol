@@ -1,9 +1,6 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
+@extends('layouts.master');
+@section('content');
+    <div class="container text-center text-warning">
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
@@ -12,7 +9,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }} class='text-warning'">
             @csrf
 
             <div>
@@ -39,10 +36,11 @@
                     </a>
                 @endif
 
-                <x-jet-button class="ml-4">
+                <x-jet-button class="ml-4 btn-info">
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+    </div>
+@stop
+
