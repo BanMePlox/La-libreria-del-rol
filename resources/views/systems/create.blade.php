@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Crear')
+@if (Auth::check())
 @if (Auth::user()->admin)
     @section('content')
         <form action="{{url('/systems')}}" method="post" enctype="multipart/form-data">
@@ -13,6 +14,9 @@
                 <br>
                 <label for="file_path">Portada</label>
                 <input type="file" name="file_path" id="inputimage">
+                <br>
+                <label for="descripcion">Descripcion</label>
+                <input type="text" name="descripcion" id="inputimage">
                 <br>
             </div>
             <button type="submit" class="btn btn-primary">Crear</button>

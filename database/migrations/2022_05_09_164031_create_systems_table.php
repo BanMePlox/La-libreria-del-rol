@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->date('release_date');
             $table->string('file_path');
+            $table->string('descripcion', 500);
             $table->timestamps();
         });
     }

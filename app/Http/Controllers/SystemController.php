@@ -27,7 +27,7 @@ class SystemController extends Controller
      */
     public function create()
     {
-        return view("system.create");
+        return view("systems.create");
     }
 
     /**
@@ -56,10 +56,11 @@ class SystemController extends Controller
     {
 
         $datos=Book::all()->where('system_id', $id);
+        $datosSistema=System::all();
         $sistema=System::findorFail($id);
 
 
-       return view ("systems.show", compact('datos', 'sistema'));
+       return view ("systems.show", compact('datos', 'sistema', 'datosSistema'));
     }
 
     /**

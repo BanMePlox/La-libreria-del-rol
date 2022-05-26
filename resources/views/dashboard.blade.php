@@ -1,16 +1,16 @@
-@extends('layouts.master');
-@section('content');
-{{-- Imagen, nombre, correo y acceder a modificar perfil --}}
-<div class="row text-warning text-center">
-    <div class="col-sm-3">
+@extends('layouts.master')
 
-    </div>
-    <div class="col-sm-3">
+@section('title', 'Inicio')
 
+
+@section('content')
+    <script>
+        setTimeout(function() {
+            window.location.href = '{{route('main')}}';
+        }, 5000);
+    </script>
+    <div class="text-center text-warning m-5">
+        <img src="{{ URL::asset('storage/naruto2.jpg') }}" alt="">
+        <h1>Bienvenido, aventurero! En unos segundos, serás redireccionado al inicio.</h1>
     </div>
-    <div class="col-sm-6">
-        <img src="" alt="">
-        <p>Imagen de perfil</p>
-    </div>
-  </div>
 @stop

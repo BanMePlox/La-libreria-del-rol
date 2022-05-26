@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
-use App\Models\System;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class BookController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $datos['books']=Book::paginate(9);
-        return view('books.index',$datos);
+        $datos['name']=Article::paginate(9);
+        return view('articles.index',$datos);
     }
 
     /**
@@ -26,9 +25,8 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $sistemas = System::all();
-
-        return view("books.create", compact('sistemas'));
+    {
+        return view("articles.create");
     }
 
     /**
@@ -39,73 +37,73 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $datosLibro = request()->except('_token');
+        $datosArticulo = request()->except('_token');
         if ($request->hasFile('file_path')){
-            $datosLibro['file_path']=$request->file('file_path')->store('uploads','public');
+            $datosArticulo['file_path']=$request->file('file_path')->store('uploads','public');
         }
-        Book::insert($datosLibro);
-        return redirect("books");
+        Article::insert($datosArticulo);
+        return redirect("articles");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $datos=Book::all()->where('id', $id);
-       return view ("books.show", compact('datos', 'id'));
+            $datos=article::all()->where('id', $id);
+           return view ("articles.show", compact('datos', 'id'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $sistemas = System::all();
-        $libro=Book::findorFail($id);
-        return view('books.edit', compact('sistemas', 'libro'));
+
+        $article=Article::findorFail($id);
+        return view('articles.edit', compact('article'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $datosLibro = request()->except(['_token', '_method']);
+        $datosArticle = request()->except(['_token', '_method']);
         if ($request->hasFile('file_path')){
-            $libro=Book::findorFail($id);
-            Storage::delete('public/'.$libro->file_path);
+            $article=Article::findorFail($id);
+            Storage::delete('public/'.$article->file_path);
 
-            $datosLibro['file_path']=$request->file('file_path')->store('uploads','public');
+            $datosArticle['file_path']=$request->file('file_path')->store('uploads','public');
         }
-        Book::where('id','=',$id)->update($datosLibro);
-        return redirect('books');
+        Article::where('id','=',$id)->update($datosArticle);
+        return redirect('articles');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $libro=Book::findorFail($id);
+        $article=Article::findorFail($id);
 
-        if(Storage::delete('public/'.$libro->file_path)) {
-            Book::destroy($id);
+        if(Storage::delete('public/'.$article->file_path)) {
+            Article::destroy($id);
         }
 
-        return redirect('books');
+        return redirect('articles');
     }
 }

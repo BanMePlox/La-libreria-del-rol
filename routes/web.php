@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SystemController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,6 @@ use App\Http\Controllers\SystemController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/welcome', function () {
-    return view('welcome');
-    })->name('welcome');
 
 Route::middleware([
     'auth:sanctum',
@@ -31,17 +28,40 @@ Route::middleware([
 
 Route::get('/', function () {
     return view('pages/main');
-    })->name('main');
+})->name('main');
+
+Route::get('/admin', function () {
+    return view('admin/index');
+})->name('admin');
+
+Route::get('/adminusers', function () {
+    return view('admin/users');
+})->name('adminusers');
+
+Route::get('/adminlibros', function () {
+    return view('admin/libros');
+})->name('adminlibros');
+
+Route::get('/adminsistemas', function () {
+    return view('admin/sistemas');
+})->name('adminsistemas');
+
+Route::get('/adminnoticias', function () {
+    return view('admin/noticias');
+})->name('adminnoticias');
 
 
 
 
-Route::get('delete/{id}',[SystemController::class,'destroy']);
-Route::get('deletebook/{id}',[BookController::class,'destroy']);
-Route::post('edit',[SystemController::class,'update']);
-Route::resource('systems', SystemController::class);
+
+
+Route::get('delete/{id}', [SystemController::class, 'destroy']);
+Route::get('deletebook/{id}', [BookController::class, 'destroy']);
+Route::get('deletearticle/{id}', [ArticleController::class, 'destroy']);
+Route::post('edit', [SystemController::class, 'update']);
+
+Route::resource('systems', SystemController::class)->names([
+    'index' => 'sistemas'
+]);
 Route::resource('books', BookController::class);
-
-Route::get('/systems', function() {
-    return view('systems.index');
-})->name('sistemas');
+Route::resource('articles', ArticleController::class);

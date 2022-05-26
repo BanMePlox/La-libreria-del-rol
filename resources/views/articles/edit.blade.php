@@ -3,22 +3,20 @@
 @if (Auth::check())
 @if (Auth::user()->admin)
     @section('content')
-        <form action="{{url('systems/'.$sistema->id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{url('articles/'.$article->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             {{ method_field('PATCH')}}
             <div class="form-group text-warning p-4">
                 <label for="name">Nombre</label>
-                <input type="text" name="name" id="inputname" value="{{$sistema['name']}}">
+                <input type="text" name="name" id="inputname" value="{{$article['name']}}">
                 <br>
-                <label for="date">Fecha de lanzamiento</label>
-                <input type="date" name="release_date" id="inputreleasedate" value="{{$sistema['release_date']}}">
-                <br>
-                <label for="file_path">Portada</label>
+                <label for="file_path">Imagen</label>
                 <input type="file" name="file_path" id="inputimage">
                 <br>
-                <label for="descripcion">Descripcion</label>
-                <input type="text" name="descripcion" id="inputimage">
+                <label for="descripcion">Cuerpo</label>
+                <input type="text" name="descripcion" id="inputimage" value={{$article['descripcion']}}>
                 <br>
+
             </div>
             <button type="submit" class="btn btn-primary">Modificar datos</button>
         </form>

@@ -2,10 +2,6 @@
 
 @section('title', 'Inicio')
 
-@section('sidebar')
-    @parent
-
-@stop
 
 @section('content')
 

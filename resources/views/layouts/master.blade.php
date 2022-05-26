@@ -21,8 +21,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Usuario</a>
                         <ul class="dropdown-menu">
                             @if (Auth::check())
-                                <li><a class="dropdown-item" href="{{ url('dashboard') }}">Tu perfil</a></li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}">Desconectar</a></li>
+                                <li><a class="dropdown-item" href="{{ route('profile.show') }}">Tu perfil</a></li>
                             @else
                             <li><a class="dropdown-item" href="{{ route('login') }}">Identificarme</a></li>
                             <li><a class="dropdown-item" href="{{ route('register') }}">Registrarme</a></li>
@@ -31,8 +30,15 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('main')}}">Inicio</a>
+                        <a class="nav-link" aria-current="page" href="{{route('main')}}">Inicio</a>
                     </li>
+                    @if (Auth::check())
+                        @if (Auth::user()->admin)
+                            <li class="nav-item">
+                                <a href="{{route('admin')}}" class="nav-link">Administración</a>
+                            </li>
+                        @endif
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{route ('sistemas')}}">Sistemas de juego</a>
                     </li>
