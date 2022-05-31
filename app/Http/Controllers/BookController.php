@@ -44,7 +44,7 @@ class BookController extends Controller
             $datosLibro['file_path']=$request->file('file_path')->store('uploads','public');
         }
         Book::insert($datosLibro);
-        return redirect("books");
+        return redirect("systems");
     }
 
     /**

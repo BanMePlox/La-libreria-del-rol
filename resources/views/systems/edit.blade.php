@@ -14,10 +14,10 @@
                 <input type="date" name="release_date" id="inputreleasedate" value="{{$sistema['release_date']}}">
                 <br>
                 <label for="file_path">Portada</label>
-                <input type="file" name="file_path" id="inputimage">
+                <input type="file" name="file_path" id="inputimage" >
                 <br>
                 <label for="descripcion">Descripcion</label>
-                <input type="text" name="descripcion" id="inputimage">
+                <input type="text" name="descripcion" id="inputimage" value="{{$sistema['descripcion']}}">
                 <br>
             </div>
             <button type="submit" class="btn btn-primary">Modificar datos</button>

@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('name', 50);
             $table->date('release_date', 50);
             $table->double('price', 8, 2);
-            $table->foreignId('system_id')->constrained('systems');
+            $table->foreignId('system_id')->constrained('systems')->onDelete('cascade')->onUpdate('cascade');
             $table->string('file_path');
-            $table->string('descripcion', 500);
+            $table->string('descripcion', 5000);
             $table->timestamps();
         });
     }

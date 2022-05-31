@@ -30,7 +30,7 @@
                                 <td><img src="{{ asset('storage') . '/' . $article->file_path }}" alt="Imagen sistema" width="50px" height="50px"></td>
                                 <td>{{$article->name}}</td>
                                 <td>{{$article->descripcion}}</td>
-                                <td><a href="{{ 'article/' . $article->id . '/edit/' }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <td><a href="{{ 'articles/' . $article->id . '/edit/' }}"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <a href="{{ 'deletearticle/' . $article->id }}"><i class="fa-solid fa-eraser"></i></a></td>
 
                             </tr>

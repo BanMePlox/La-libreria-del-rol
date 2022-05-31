@@ -8,11 +8,15 @@
             @if ($dato->id == $id)
                 <div class="container">
 
-                    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
-                        <div class="col-md-12 px-0">
-                            <h1 class="display-6 font-italic">{{ $dato->name }}</h1>
+                    <div class="row p-3 p-md-5 text-white-50 rounded bg-dark">
+                        <div class="container col-sm-6 text-warning text-center">
+                            <img src="{{asset('storage/'.$dato->file_path)}}" alt="Imagen libro" class="" height="400px" width="400px">
+                        </div>
+                        <div class="container col-sm-6 text-warning text-center">
+                            <h1 class="display-12 font-italic">{{ $dato->name }}</h1>
                             <p class="lead my-3">{{$dato->release_date}}</p>
                         </div>
+
                     </div>
 
                     <div class="row mb-2">
@@ -20,17 +24,17 @@
                             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                                 <div class="card-body d-flex flex-column align-items-start">
                                     <h3 class="mb-0">
-                                        <a class="text-dark" href="#">Comprar en Amazon</a>
+                                        <a class="text-dark" href="https://www.amazon.es/s?k={{ $dato->name }}&__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=V7L3VRPU4K84&sprefix=as%2Caps%2C204&ref=nb_sb_noss_2"
+                                            target="_blank">Comprar en Amazon</a>
                                     </h3>
                                     <p class="card-text mb-auto">{{ $dato->name }} está disponible a la venta en Amazon!
                                     </p>
-                                    <a href="https://www.amazon.es/s?k={{ $dato->name }}&__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=V7L3VRPU4K84&sprefix=as%2Caps%2C204&ref=nb_sb_noss_2"
-                                        target="_blank">Continue reading</a>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <p class="text-center text-white">{{$dato->descripcion}}</p>
+                            <p class="text-center text-white-50">{{$dato->descripcion}}</p>
                         </div>
                     </div>
                 </div>

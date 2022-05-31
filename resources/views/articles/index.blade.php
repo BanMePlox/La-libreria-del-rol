@@ -11,9 +11,9 @@
 @endif
     <div class="row p-5">
         @foreach ($name as $articulo)
-            <div class="container col-sm-4 text-warning text-center border border-3">
+            <div class="container col-sm-4 text-warning text-center has-bg-img">
                 <a href="{{ 'articles/' . $articulo->id }}"><img src="{{ asset('storage') . '/' . $articulo->file_path }}" alt=""
-                        width="auto" height="auto" class="img-fluid"></a>
+                        width="80%" height="80%" class="bg-img mt-1 mb-1"></a>
                 <br>
                 <a href="{{ 'articles/' . $articulo->id }}" class="text-warning">{{ $articulo->name }}</a>
                 @if (Auth::check())

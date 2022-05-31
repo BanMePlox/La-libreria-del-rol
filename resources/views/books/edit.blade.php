@@ -30,7 +30,7 @@
                     <br>
                     <input type="file" name="file_path" id="inputimage" value="{{ $libro['file_path'] }}">
                     <label for="descripcion">Descripcion</label>
-                    <input type="text" name="descripcion" id="inputdesc">
+                    <input type="text" name="descripcion" id="inputdesc" value="{{ $libro['descripcion'] }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -17,7 +17,7 @@
             <div class="carousel-item">
                 <img src="storage/PF1.png" alt="Imagen de carrusel" class="d-block w-100 h-20">
                 <div class="carousel-caption text-warning">
-                    <p>Cumple tus fantasias y disfruta!</p>
+                    <h2>Cumple tus fantasias y disfruta!</h2>
                 </div>
             </div>
             <div class="carousel-item active">
@@ -30,7 +30,7 @@
             <div class="carousel-item">
                 <img src="storage/SW1.jpg" alt="Imagen de carrusel" class="d-block w-100">
                 <div class="carousel-caption bg-transparent text-dark">
-                    <h3>Diviertete, convierte en quien soñaste de pequeño!</h3>
+                    <h2>Diviertete, convierte en quien soñaste de pequeño!</h3>
                 </div>
             </div>
         </div>
@@ -46,34 +46,26 @@
     </div>
 
     <div class="container py-5 my-2">
-        <h1 class="text-warning text-center">Novedades en los TTRPG</h1>
+        <h1 class="text-warning text-center text-decoration-underline">Novedades en los TTRPG</h1>
     </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md bg-transparent text-white">
-                <img src="storage/portada/paladine.jpg" alt="Imagen titan fundador"
-                    class="img-thumbnail img-fluid ratio ratio-16x9">
-                <h3 class="text-center">Titan World: EL TTRPG de Attack on Titans, confirmado.</h3>
-                <div class="text-center">
-                    <a href="#">Leer más...</a>
-                </div>
-            </div>
-            <div class="col-md bg-transparent text-white">
-                <img src="storage/portada/spelljammer.jpg" alt="Imagen Spelljammer"
-                    class="img-thumbnail img-fluid ratio ratio-16x9">
-                <h3 class="text-center">Spelljammer: Aventuras en el espacio se ha confirmado oficialmente</h3>
-                <div class="text-center">
-                    <a href="#">Leer más...</a>
-                </div>
-            </div>
-            {{-- https://www.belloflostsouls.net/2022/05/warhammer-40k-new-chaos-combat-patrol-box-announced.html --}}
-            <div class="col-md bg-transparent text-white">
-                <img src="storage/portada/a.jpg" alt="Imagen Warhammer" class="img-fluid img-thumbnail  ratio ratio-16x9">
-                <h3 class="text-center">Warhammer 40K: Se anuncia la nueva caja de Patrulla de Combate del Caos </h3>
-                <div class="text-center">
-                    <a href="#" class="text-center">Leer más...</a>
-                </div>
-            </div>
+        @php
+            $articles = DB::table('articles')
+                ->limit(3)
+                ->get();
+        @endphp
+<div class="row p-5">
+    @foreach ($articles as $articulo)
+        <div class="container col-sm-4 text-warning text-center border border-3">
+            <a href="{{ 'articles/' . $articulo->id }}"><img src="{{ asset('storage') . '/' . $articulo->file_path }}" alt=""
+                    width="200px" height="200px" class="mt-3"></a>
+            <br>
+            <h3>{{$articulo->name}}</h3>
+            <a href="{{ 'articles/' . $articulo->id }}">
+                <h4>Leer más...</h4>
+            </a>
+
         </div>
-    </div>
+    @endforeach
+</div>
 @stop

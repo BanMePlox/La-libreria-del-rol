@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('systems', function (Blueprint $table) {
+        Schema::create('subs', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->date('release_date');
-            $table->string('file_path');
-            $table->string('descripcion', 5000);
+            $table->foreignId('system_id')->constrained('systems')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('systems');
+        Schema::dropIfExists('subs');
     }
 };

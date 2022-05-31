@@ -13,8 +13,12 @@ class System extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function books(): HasMany
+    public function books()
     {
         return $this->hasMany(books::class, 'foreign_key', 'local_key');
+    }
+
+    public function sub() {
+        return $this->hasOne(Sub::class);
     }
 }
