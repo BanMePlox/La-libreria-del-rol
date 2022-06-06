@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Sub;
 use App\Models\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class SubController extends Controller

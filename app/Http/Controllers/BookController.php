@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\System;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {

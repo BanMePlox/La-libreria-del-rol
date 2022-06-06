@@ -28,10 +28,14 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         $datosAnswer = request()->except('_token');
-        if(Auth::user()->id == $datosAnswer['user-id']) {
+        $user = Auth::user();
+        if($user->id == $datosAnswer['user_id']) {
         Answer::insert($datosAnswer);
         return redirect("/posts/".$datosAnswer['post_id']);
+    } else {
+        return (view('errors.404'));
     }
+
     }
 
     /**

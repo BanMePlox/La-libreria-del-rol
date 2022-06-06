@@ -1,15 +1,17 @@
 @extends('layouts.master')
-@section('title', 'Crear')
+@section('title', 'Sistemas')
 @section('content');
     <div class="row p-5">
 
         @php
             $check = 0;
         @endphp
+        @if (Auth::check())
             @if (Auth::user()->admin)
-            <div class="row p-12">
-                <button><a href="{{ '../books/create' }}">Añadir nuevo libro</a></button>
-            </div>
+                <div class="row p-12">
+                    <button><a href="{{ '../books/create' }}">Añadir nuevo libro</a></button>
+                </div>
+            @endif
         @endif
         @foreach ($datos as $libro)
             @foreach ($datosSistema as $item)
@@ -23,8 +25,8 @@
                 @endif
             @endforeach
             <div class="container col-sm-4 text-warning text-center border border-3">
-                <a href="{{ '../books/' . $libro->id }}"><img src="{{ asset('storage') . '/' . $libro->file_path }}" alt=""
-                        width="300px" height="300px" class="img-fluid"></a>
+                <a href="{{ '../books/' . $libro->id }}"><img src="{{ asset('storage') . '/' . $libro->file_path }}"
+                        alt="" width="300px" height="300px" class="img-fluid"></a>
                 <br>
                 <a href="{{ '../books/' . $libro->id }}" class="text-warning">{{ $libro->name }}</a>
                 @if (Auth::check())

@@ -12,6 +12,7 @@
             </div>
 
         @endforeach
+        @if (Auth::check())
         <div class="col-sm-12 border text-warning text-center">
             <form action="{{route('postcreate', $id)}}" method="get" enctype="multipart/form-data">
                 @csrf
@@ -28,4 +29,5 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Crear</button>
             </form>
+            @endif
     @stop

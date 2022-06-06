@@ -13,9 +13,11 @@
             <div class="container col-sm-4 text-warning text-center border border-3">
                 <a href="{{ 'subs/' . $subforo->id }}" class="text-warning">{{ $subforo->name }}</a>
                 @if (Auth::check())
-                    {{-- <a href="{{ 'subs/' . $subforo->id . '/edit/' }}"><i class="fa-solid fa-pen-to-square"></i></a> --}}
-                    <a href="{{ 'deletesub/' . $subforo['id'] }}" onclick="return confirm('Quieres eliminar el subforo?')"><i
-                            class="fa-solid fa-eraser"></i></a>
+                    @if (Auth::user()->admin)
+                        {{-- <a href="{{ 'subs/' . $subforo->id . '/edit/' }}"><i class="fa-solid fa-pen-to-square"></i></a> --}}
+                        <a href="{{ 'deletesub/' . $subforo['id'] }}"
+                            onclick="return confirm('Quieres eliminar el subforo?')"><i class="fa-solid fa-eraser"></i></a>
+                    @endif
                 @endif
             </div>
         @endforeach

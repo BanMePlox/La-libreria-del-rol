@@ -7,6 +7,7 @@
 
         <a href="{{ '../deletepost/' .$id }}" onclick="return confirm('Quieres eliminar el post?')" class="ml-10">Eliminar post</a>
     @endif
+    @endif
         @php
             $respuestas = DB::table('answers')
                 ->where('post_id', '=', $id)
@@ -39,6 +40,7 @@
             </div>
         </div>
         @endforeach
+        @if (Auth::check())
         <div class="col-sm-12 border text-warning text-center">
             <form action="{{route('asnwercreate', $id)}}" method="get" enctype="multipart/form-data">
                 @csrf
@@ -52,5 +54,6 @@
                 <button type="submit" class="btn btn-primary">Crear</button>
             </form>
         </div>
+        @endif
         @stop
-    @endif
+
